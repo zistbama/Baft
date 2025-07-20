@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محاسبات سریع شیمی</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 14px; /* فونت کوچک برای جا شدن مطالب بیشتر */
+            line-height: 1.7;
+        }
+        .chart-bar {
+            transition: width 0.8s ease-in-out;
+        }
+        details > summary {
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details > summary::before {
+            content: '◀';
+            margin-left: 8px;
+            font-size: 0.8em;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+        details[open] > summary::before {
+            transform: rotate(90deg);
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #2dd4bf, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .example-box {
+            background-color: rgba(17, 24, 39, 0.8); /* bg-gray-900 with opacity */
+            border-right: 3px solid #0ea5e9; /* border-sky-500 */
+            padding: 12px;
+            border-radius: 8px;
+            font-family: monospace;
+            direction: ltr;
+            text-align: left;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body class="bg-gray-800 text-gray-300 p-2 sm:p-4">
+
+    <div class="max-w-3xl mx-auto bg-gray-900 p-4 rounded-2xl shadow-2xl shadow-cyan-500/10">
+
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold gradient-text">محاسبات سریع شیمی</h1>
+            <p class="text-gray-400 mt-2">کلید طلایی مدیریت زمان در کنکور تجربی</p>
+        </header>
+
+        <!-- نمودار اهمیت سرعت -->
+        <div class="bg-gray-800 p-4 rounded-xl mb-8">
+            <h3 class="text-lg font-semibold mb-4 text-center text-white">تأثیر سرعت محاسبات بر زمان پاسخ‌گویی</h3>
+            <div class="space-y-4 text-xs">
+                <!-- روش عادی -->
+                <div class="flex items-center">
+                    <span class="w-28 shrink-0">محاسبه عادی</span>
+                    <div class="w-full bg-gray-700 rounded-full h-5 relative">
+                        <div class="chart-bar bg-red-500 h-5 rounded-full flex items-center justify-center" style="width: 95%">
+                            <span class="text-white font-bold">~۹۰ ثانیه</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- روش سریع -->
+                <div class="flex items-center">
+                    <span class="w-28 shrink-0">محاسبه سریع (تقریب)</span>
+                    <div class="w-full bg-gray-700 rounded-full h-5 relative">
+                        <div class="chart-bar bg-teal-500 h-5 rounded-full flex items-center justify-center" style="width: 40%">
+                            <span class="text-white font-bold">~۳۵ ثانیه</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- تکنیک ۱: هنر تقریب زدن -->
+        <div class="bg-gray-800 p-4 rounded-xl mb-6">
+            <h2 class="text-xl font-bold mb-3 text-sky-400">۱. هنر تقریب زدن (Approximation)</h2>
+            <p class="mb-4">مهم‌ترین تکنیک! اعداد را به نزدیک‌ترین عدد رُند تبدیل کنید تا ضرب و تقسیم آسان شود. این کار در اکثر سوالات کنکور که گزینه‌ها فاصله منطقی دارند، پاسخگوست.</p>
+            
+            <div class="example-box mb-4">
+                <p class="text-gray-400">// Example: Calculate molarity</p>
+                <p><span class="text-pink-400">M</span> = (4.9 g / 98.1 g/mol) / 0.205 L</p>
+                <p class="text-gray-400">// Approximation</p>
+                <p><span class="text-pink-400">M</span> ≈ (5 / 100) / 0.2</p>
+                <p><span class="text-pink-400">M</span> ≈ 0.05 / 0.2 = 0.25 mol/L</p>
+            </div>
+
+            <details class="bg-gray-900/60 p-3 rounded-lg">
+                <summary class="font-semibold text-sky-400">تقریب‌های رایج در شیمی</summary>
+                <ul class="list-disc list-inside mt-3 text-gray-300 space-y-2 pr-2 text-sm">
+                    <li>عدد آووگادرو: <span dir="ltr">6.022 × 10²³ ≈ 6 × 10²³</span></li>
+                    <li>شتاب گرانش: <span dir="ltr">g = 9.8 m/s² ≈ 10 m/s²</span></li>
+                    <li>جرم مولی‌ها: <span dir="ltr">H₂SO₄ = 98.07 g/mol ≈ 100 or 98 g/mol</span></li>
+                    <li>اعداد نزدیک به ۱ یا ۱۰: <span dir="ltr">0.98 ≈ 1</span> یا <span dir="ltr">10.2 ≈ 10</span></li>
+                </ul>
+            </details>
+        </div>
+
+        <!-- تکنیک ۲: تبدیل به کسر -->
+        <div class="bg-gray-800 p-4 rounded-xl mb-6">
+            <h2 class="text-xl font-bold mb-3 text-sky-400">۲. جادوی کسرها (Fractions)</h2>
+            <p class="mb-4">اعداد اعشاری معروف را به کسر تبدیل کنید. کار با کسرها اغلب ساده‌تر از اعشار است و امکان ساده‌سازی را فراهم می‌کند.</p>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-center">
+                    <thead class="bg-gray-700 text-sky-300">
+                        <tr>
+                            <th class="p-2">اعشار</th>
+                            <th class="p-2">کسر</th>
+                            <th class="p-2">اعشار</th>
+                            <th class="p-2">کسر</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-gray-800">
+                        <tr class="border-b border-gray-700">
+                            <td class="p-2 font-mono">0.25</td>
+                            <td class="p-2 font-mono">1/4</td>
+                            <td class="p-2 font-mono">0.2</td>
+                            <td class="p-2 font-mono">1/5</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="p-2 font-mono">0.75</td>
+                            <td class="p-2 font-mono">3/4</td>
+                            <td class="p-2 font-mono">0.4</td>
+                            <td class="p-2 font-mono">2/5</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 font-mono">0.5</td>
+                            <td class="p-2 font-mono">1/2</td>
+                            <td class="p-2 font-mono">0.125</td>
+                            <td class="p-2 font-mono">1/8</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <details class="mt-4 bg-gray-900/60 p-3 rounded-lg">
+                <summary class="font-semibold text-sky-400">مثال کنکوری</summary>
+                 <div class="example-box mt-3">
+                    <p class="text-gray-400">// Calculate mass from moles</p>
+                    <p><span class="text-pink-400">mass</span> = 0.125 mol × 64 g/mol</p>
+                    <p class="text-gray-400">// Using fractions</p>
+                    <p><span class="text-pink-400">mass</span> = (1/8) × 64</p>
+                    <p><span class="text-pink-400">mass</span> = 8 g</p>
+                </div>
+            </details>
+        </div>
+
+        <!-- تکنیک ۳: حذف گزینه هوشمندانه -->
+        <div class="bg-gray-800 p-4 rounded-xl mb-6">
+            <h2 class="text-xl font-bold mb-3 text-sky-400">۳. حذف گزینه هوشمندانه</h2>
+            <p class="mb-4">قبل از محاسبه کامل، مرتبه بزرگی (توان ۱۰) و اولین رقم معنادار پاسخ را تخمین بزنید. با این کار می‌توانید ۲ یا ۳ گزینه را فوراً حذف کنید.</p>
+            
+            <p class="font-semibold mb-2">مثال: حاصل <span dir="ltr">(3.2 × 10⁻⁵) × (2.1 × 10³) / (7.8 × 10⁻²)</span> کدام است؟</p>
+            <p class="mb-3 text-sm">تخمین: <span dir="ltr">~ (3 × 2) / 8 = 6/8 = 0.75</span>. توان ۱۰: <span dir="ltr">(-5 + 3) - (-2) = 0</span>. پس جواب نزدیک <span dir="ltr">0.75</span> است.</p>
+            
+            <div class="grid grid-cols-2 gap-2 text-center text-sm">
+                <div class="bg-red-900/50 p-2 rounded-lg border border-red-500">۱) <span dir="ltr">8.6 × 10¹</span> <span class="text-red-400">(رد می‌شود)</span></div>
+                <div class="bg-red-900/50 p-2 rounded-lg border border-red-500">۲) <span dir="ltr">8.6 × 10⁻²</span> <span class="text-red-400">(رد می‌شود)</span></div>
+                <div class="bg-green-900/50 p-2 rounded-lg border border-green-500">۳) <span dir="ltr">0.86</span> <span class="text-green-400">(محتمل)</span></div>
+                <div class="bg-red-900/50 p-2 rounded-lg border border-red-500">۴) <span dir="ltr">1.2 × 10⁻³</span> <span class="text-red-400">(رد می‌شود)</span></div>
+            </div>
+        </div>
+        
+        <!-- تکنیک ۴: ساده‌سازی و توان‌ها -->
+        <div class="bg-gray-800 p-4 rounded-xl">
+            <h2 class="text-xl font-bold mb-3 text-sky-400">۴. ساده‌سازی و کار با توان‌ها</h2>
+            <p class="mb-4">همیشه قبل از ضرب، کسرها را تا حد امکان ساده کنید. در کار با نماد علمی، ابتدا تکلیف توان‌های ۱۰ را مشخص کنید و سپس روی اعداد کار کنید.</p>
+            
+            <div class="example-box">
+                <p class="text-gray-400">// Problem</p>
+                <p>(2700 × 0.04) / 1.2</p>
+                <p class="text-gray-400">// Step 1: Scientific Notation</p>
+                <p>(2.7 × 10³ × 4 × 10⁻²) / (1.2)</p>
+                <p class="text-gray-400">// Step 2: Group numbers and powers</p>
+                <p>((2.7 × 4) / 1.2) × 10¹</p>
+                <p class="text-gray-400">// Step 3: Simplify and solve</p>
+                <p>((27 × 4) / 12) × 10¹ = (9 × 1) × 10¹ = 90</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+                          </html>
+                          
